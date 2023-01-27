@@ -3,6 +3,9 @@
  */
 public class SearchAlgorithms {
 
+    /**
+     * Linear search concerning Integers
+     */
     public static boolean linearSearch(int key, int[] array){
         for (int i = 0; i < array.length; i++){
             if (key == array[i]){
@@ -12,6 +15,9 @@ public class SearchAlgorithms {
         return false;
     }
 
+    /**
+     * Linear search concerning String
+     */
     public static boolean linearSearch(String key, String[] array){
 
         for (int i = 0; i < array.length; i++){
@@ -23,6 +29,9 @@ public class SearchAlgorithms {
         return false;
     }
 
+    /**
+     * Binary search concerning Integers
+     */
     public static boolean binarySearch(int key, int[] array){
 
         int lowerIndex = 0;
@@ -43,6 +52,9 @@ public class SearchAlgorithms {
         return false;
     }
 
+    /**
+     * Binary search concerning String
+     */
     public static boolean binarySearch(String key, String[] array){
 
         int lowerIndex = 0;
