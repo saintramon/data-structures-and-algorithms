@@ -1,3 +1,6 @@
+/**
+ * This class holds all search algorithm method
+ */
 public class SearchAlgorithms {
 
     public static boolean linearSearch(int key, int[] array){
