@@ -1,5 +1,15 @@
+/**
+ * This class contains different sorting algorithms I currently have knowledge on
+ *
+ * This class also contains the method of creating a copy of the original array and a method
+ * for printing an array
+ *
+ */
 public class SortingAlgorithms {
 
+    /**
+     * This section contains the balloon sort algorithm for both integers and string arrays
+     */
     public static int[] balloonSort(int[] array){
         int[] sortedArray = copyArray(array);
 
@@ -35,7 +45,9 @@ public class SortingAlgorithms {
         return sortedArray;
     }
 
-
+    /**
+     * This section contains the bubble sort algorithm for both integers and string arrays
+     */
     public static int[] bubbleSort(int[] array){
         int[] sortedArray = copyArray(array);
 
@@ -65,6 +77,9 @@ public class SortingAlgorithms {
         return sortedArray;
     }
 
+    /**
+     * This section contains the selection sort algorithm for both integers and string arrays
+     */
     public static int[] selectionSort(int[] array){
         int minIndex = 0;
 
@@ -114,7 +129,9 @@ public class SortingAlgorithms {
     }
 
 
-
+    /**
+     * This section contains the copy array method to manipulate the array without changing the original
+     */
     public static int[] copyArray(int[] array){
         int[] copiedArray = new int[array.length];
 
@@ -131,6 +148,10 @@ public class SortingAlgorithms {
         }
         return copiedArray;
     }
+
+    /**
+     * This section contains the method of printing the array that I want to print
+     */
     public static void printArray(int[] array){
         for (int i : array){
             System.out.print(i + ", ");
