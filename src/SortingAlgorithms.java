@@ -8,9 +8,9 @@
 public class SortingAlgorithms {
 
     /**
-     * This section contains the balloon sort algorithm for both integers and string arrays
+     * This section contains the Balloon sort algorithm for integer arrays
      */
-    public static int[] balloonSort(int[] array){
+    public int[] balloonSort(int[] array){
         int[] sortedArray = copyArray(array);
 
         for (int i = 0; i < sortedArray.length; i++){
@@ -29,26 +29,11 @@ public class SortingAlgorithms {
 
         return sortedArray;
     }
-    public static String[] balloonSort(String[] array){
-        String[] sortedArray = copyArray(array);
-
-        for (int i = 0; i < sortedArray.length; i++){
-            for (int j = i + 1; j < sortedArray.length; j++){
-                if (sortedArray[i].compareTo(sortedArray[j]) >= 1){
-                    String temp = sortedArray[i];
-                    sortedArray[i] = sortedArray[j];
-                    sortedArray[j] = temp;
-                }
-            }
-        }
-
-        return sortedArray;
-    }
 
     /**
-     * This section contains the bubble sort algorithm for both integers and string arrays
+     * This section contains the Bubble Sort algorithm for integer arrays
      */
-    public static int[] bubbleSort(int[] array){
+    public int[] bubbleSort(int[] array){
         int[] sortedArray = copyArray(array);
 
         for (int i = 0; i < sortedArray.length - 1; i++){
@@ -62,25 +47,11 @@ public class SortingAlgorithms {
         }
         return sortedArray;
     }
-    public static String[] bubbleSort(String[] array){
-        String[] sortedArray = copyArray(array);
-
-        for (int i = 0; i < sortedArray.length - 1; i++){
-            for(int j = 0; j < sortedArray.length - i -1; j++){
-                if (sortedArray[j].compareTo(sortedArray[j+1]) >= 1){
-                    String temp = sortedArray[j];
-                    sortedArray[j] = sortedArray[j+1];
-                    sortedArray[j+1] = temp;
-                }
-            }
-        }
-        return sortedArray;
-    }
 
     /**
-     * This section contains the selection sort algorithm for both integers and string arrays
+     * This section contains the Selection Sort algorithm for integer arrays
      */
-    public static int[] selectionSort(int[] array){
+    public int[] selectionSort(int[] array){
         int minIndex = 0;
 
         int[] sortedArray = copyArray(array);
@@ -103,47 +74,72 @@ public class SortingAlgorithms {
 
         return sortedArray;
     }
-    public static String[] selectionSort(String[] array){
 
-        String[] sortedArray = copyArray(array);
+    /**
+     * This section contains the Merge Sort algorithm for integer arrays
+     */
+    public int[] mergeSort(int[] array){
+        int[] sorted = copyArray(array);
 
-        int minIndex;
-
-        for (int i = 0; i < sortedArray.length; i++){
-            minIndex = i;
-            for (int j = i + 1; j < sortedArray.length; j++){
-                if (sortedArray[minIndex].compareTo(sortedArray[j]) > 0){
-                    minIndex = j;
-                }
-            }
-
-            if (minIndex != i){
-                String temp = sortedArray[i];
-                sortedArray[i] = sortedArray[minIndex];
-                sortedArray[minIndex] = temp;
-            }
-
+        if (sorted.length <= 1){
+            return sorted;
         }
 
-        return sortedArray;
-    }
+        int midIndex = sorted.length / 2;
 
+        int[] left = new int[midIndex];
+        int[] right = new int[sorted.length - midIndex];
+
+        for (int i = 0; i < left.length; i++){
+            left[i] = sorted[i];
+        }
+        for (int j = 0; j < right.length; j++){
+            right[j] = sorted[midIndex + j];
+        }
+
+        left = mergeSort(left);
+        right = mergeSort(right);
+
+        sorted = merge(left, right);
+
+        return sorted;
+    }
+    private int[] merge(int[] left, int[] right){
+        int[] merged = new int[left.length + right.length];
+        int i = 0, j = 0, k = 0;
+
+        while (i < left.length && j < right.length){
+            if (left[i] < right[j]){
+                merged[k] = left[i];
+                i++;
+            }else {
+                merged[k] = right[j];
+                j++;
+            }
+            k++;
+        }
+
+        while (i < left.length){
+            merged[k] = left[i];
+            i++;
+            k++;
+        }
+        while (j < right.length){
+            merged[k] = right[j];
+            j++;
+            k++;
+        }
+
+        return merged;
+    }
 
     /**
      * This section contains the copy array method to manipulate the array without changing the original
      */
-    public static int[] copyArray(int[] array){
+    public int[] copyArray(int[] array){
         int[] copiedArray = new int[array.length];
 
         for (int i = 0; i < array.length; ++i){
-            copiedArray[i] = array[i];
-        }
-        return copiedArray;
-    }
-    public static String[] copyArray(String[] array){
-        String[] copiedArray = new String[array.length];
-
-        for (int i = 0; i < array.length; i++){
             copiedArray[i] = array[i];
         }
         return copiedArray;
@@ -152,14 +148,9 @@ public class SortingAlgorithms {
     /**
      * This section contains the method of printing the array that I want to print
      */
-    public static void printArray(int[] array){
+    public void printArray(int[] array){
         for (int i : array){
-            System.out.print(i + ", ");
-        }
-    }
-    public static void printArray(String[] array){
-        for (String i : array){
-            System.out.print(i + ", ");
+            System.out.println(i);
         }
     }
 }
