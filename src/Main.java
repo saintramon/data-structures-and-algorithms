@@ -19,7 +19,7 @@ public class Main {
 
     public void populateRandArr(int[] arr){
         for (int i = 0; i < arr.length; i++){
-            arr[i] = rand.nextInt(100000);
+            arr[i] = rand.nextInt(100);
         }
     }
 
@@ -31,7 +31,16 @@ public class Main {
         int[] arr = new int[100];
         populateRandArr(arr);
 
-        System.out.println("ORIGINAL ARRAY");
+        int key = rand.nextInt(100);
+        System.out.println("KEY TO FIND: " + key);
+
+        System.out.println("\n\nSearch by LINEAR SEARCH");
+        System.out.println("Result: " + (search.linearSearch(key, arr) ? "FOUND!" : "NOT FOUND!"));
+
+        System.out.println("\n\nSearch by BINARY SEARCH");
+        System.out.println("RESULT: " + (search.binarySearch(key, sort.mergeSort(arr)) ? "FOUND!" : "NOT FOUND!"));
+
+        System.out.println("\n\n\nORIGINAL ARRAY");
         sort.printArray(arr);
 
 
