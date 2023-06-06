@@ -9,6 +9,7 @@ public class SortingAlgorithms {
 
     /**
      * This section contains the Balloon sort algorithm for integer arrays
+     * Time Complexity: O(n^2)
      */
     public int[] balloonSort(int[] array){
         int[] sortedArray = copyArray(array);
@@ -32,6 +33,7 @@ public class SortingAlgorithms {
 
     /**
      * This section contains the Bubble Sort algorithm for integer arrays
+     * Time Complexity: O(n^2)
      */
     public int[] bubbleSort(int[] array){
         int[] sortedArray = copyArray(array);
@@ -50,6 +52,7 @@ public class SortingAlgorithms {
 
     /**
      * This section contains the Selection Sort algorithm for integer arrays
+     * Time Complexity: O(n^2)
      */
     public int[] selectionSort(int[] array){
         int minIndex = 0;
@@ -77,6 +80,7 @@ public class SortingAlgorithms {
 
     /**
      * This section contains the Merge Sort algorithm for integer arrays
+     * Time Complexity: O(n log(n))
      */
     public int[] mergeSort(int[] array){
         int[] sorted = copyArray(array);
