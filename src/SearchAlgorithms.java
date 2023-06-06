@@ -7,7 +7,7 @@ public class SearchAlgorithms {
      * Linear search concerning Integers
      * Time Complexity: O(n)
      */
-    public static boolean linearSearch(int key, int[] array){
+    public boolean linearSearch(int key, int[] array){
         for (int i = 0; i < array.length; i++){
             if (key == array[i]){
                 return true;
@@ -19,25 +19,27 @@ public class SearchAlgorithms {
 
     /**
      * Binary search concerning Integers
+     * Requirement: Sorted array
      * Time Complexity: O(log n)
      */
-    public static boolean binarySearch(int key, int[] array){
+    public boolean binarySearch(int key, int[] array){
+        int lowerLimit = 0;
+        int upperLimit = array.length - 1;
 
-        int lowerIndex = 0;
-        int upperIndex = array.length - 1;
+        while (lowerLimit<= upperLimit){
+            int mid = (lowerLimit + upperLimit) / 2;
 
-        while(lowerIndex <= upperIndex){
-            int midIndex = (lowerIndex + upperIndex) / 2;
-
-            if (key > array[midIndex]){
-                lowerIndex = midIndex + 1;
-            } else if (key < array[midIndex]) {
-                upperIndex = midIndex - 1;
-            } else {
+            if (key == array[mid]){
                 return true;
+            } else if (key < array[mid]) {
+                upperLimit = mid - 1;
+            }else {
+                lowerLimit = mid + 1;
             }
         }
+
         return false;
     }
+
 
 }
